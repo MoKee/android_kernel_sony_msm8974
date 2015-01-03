@@ -22,7 +22,7 @@
 #define MSM_VDEC_DVC_NAME "msm_vdec_8974"
 #define MIN_NUM_OUTPUT_BUFFERS 4
 #define MAX_NUM_OUTPUT_BUFFERS VIDEO_MAX_FRAME
-#define DEFAULT_VIDEO_CONCEAL_COLOR_BLACK 0x8080
+#define DEFAULT_VIDEO_CONCEAL_COLOR_BLACK 0x8010
 #define MB_SIZE_IN_PIXEL (16 * 16)
 
 #define TZ_DYNAMIC_BUFFER_FEATURE_ID 12
@@ -706,7 +706,7 @@ int msm_vdec_reqbufs(struct msm_vidc_inst *inst, struct v4l2_requestbuffers *b)
 	rc = vb2_reqbufs(&q->vb2_bufq, b);
 	mutex_unlock(&q->lock);
 	if (rc)
-		dprintk(VIDC_ERR, "Failed to get reqbufs, %d\n", rc);
+		dprintk(VIDC_DBG, "Failed to get reqbufs, %d\n", rc);
 	return rc;
 }
 
