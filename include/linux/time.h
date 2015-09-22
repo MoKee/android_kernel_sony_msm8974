@@ -156,6 +156,7 @@ extern int do_setitimer(int which, struct itimerval *value,
 			struct itimerval *ovalue);
 extern unsigned int alarm_setitimer(unsigned int seconds);
 extern int do_getitimer(int which, struct itimerval *value);
+extern int __getnstimeofday(struct timespec *tv);
 extern void getnstimeofday(struct timespec *tv);
 extern void getrawmonotonic(struct timespec *ts);
 extern void getnstime_raw_and_real(struct timespec *ts_raw,
@@ -257,14 +258,6 @@ static __always_inline void timespec_add_ns(struct timespec *a, u64 ns)
 }
 
 #endif /* __KERNEL__ */
-
-#define NFDBITS			__NFDBITS
-
-#define FD_SETSIZE		__FD_SETSIZE
-#define FD_SET(fd,fdsetp)	__FD_SET(fd,fdsetp)
-#define FD_CLR(fd,fdsetp)	__FD_CLR(fd,fdsetp)
-#define FD_ISSET(fd,fdsetp)	__FD_ISSET(fd,fdsetp)
-#define FD_ZERO(fdsetp)		__FD_ZERO(fdsetp)
 
 /*
  * Names of the interval timers, and structure
